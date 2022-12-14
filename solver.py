@@ -4,6 +4,10 @@ from itertools import permutations
 from copy import copy
 
 class Solver():
+    """
+    Solver for the TSP problem
+    Must implement a step function
+    """
     def __init__(self, node_coords: list[Point], metric: Metric):
         assert (len(node_coords) > 1), 'Number of nodes must be greater than 1'
         self.node_coords = node_coords
@@ -19,6 +23,9 @@ class Solver():
     
 
 class BruteForce(Solver):
+    """
+    Brute force solution - check every possible permuation of points
+    """
     def __init__(self, node_coords: list[Point], metric: Metric):
         super().__init__(node_coords, metric)
 
