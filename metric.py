@@ -10,14 +10,16 @@ class Metric():
         """
         raise NotImplementedError()
 
-    def evaluate_solution(self, node_coords: list[Point]) -> float:
+    def evaluate_sequence(self, node_coords: list[Point]) -> float:
         """
         Function that calculates the metric over a whole path of Points
         """
         aggregate = 0
         for i in range(len(node_coords)-1):
             aggregate += self.calculate(node_coords[i], node_coords[i+1])
+        aggregate += self.calculate(node_coords[0], node_coords[-1])
         return aggregate
+
 
 class EuclideanDistance(Metric):
     """
